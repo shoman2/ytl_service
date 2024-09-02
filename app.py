@@ -4,6 +4,11 @@ import os
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return "Hello, world!"
+
+
 # 다운로드된 파일을 저장할 디렉토리 설정
 DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'downloads')
 if not os.path.exists(DOWNLOAD_FOLDER):
@@ -48,5 +53,7 @@ def download():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
