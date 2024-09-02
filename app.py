@@ -4,11 +4,6 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello, world!"
-
-
 # 다운로드된 파일을 저장할 디렉토리 설정
 DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'downloads')
 if not os.path.exists(DOWNLOAD_FOLDER):
